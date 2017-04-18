@@ -1,0 +1,22 @@
+path {
+  stroke: #f46b6b;
+  stroke-width: 0.25px;
+  fill: #c2b280;
+  opacity: 0.9;
+}
+div.tooltip {
+        color: #f46b6b;
+        background-color: #fff;
+        padding: .5em;
+        border-radius: 2px;
+        opacity: 0.9;
+        position: absolute;
+    }
+
+.hidden {
+  display: none;
+}
+
+circle {
+  fill: #f46b6b;
+}
