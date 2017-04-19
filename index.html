@@ -110,17 +110,25 @@ function clicked(d) {
     k = 1;
     centered = null;
   }
-
+  
   g.selectAll("path")
    .classed("active", centered && function(d) { return d === centered; })
-   .style("stroke-width", (0.75 / k) + "px");
-  
+   
+  if (centered !== null){
+  	g.selectAll("path")
+  	 .style("stroke-width", (0.75 / k) + "px");
+  }
 
   g.transition()
     //.style("stroke-width", (0.75 / k) + "px")
     .duration(750)
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    ;
+    .each('end', function() {
+        if (centered === null){
+		  g.selectAll("path")
+		   .style("stroke-width", (0.75 / k) + "px");
+  }
+    });
       
   var contained_points = trip_data.filter(function(point) { 
   	if(d.geometry !== null) { 
@@ -145,6 +153,8 @@ function clicked(d) {
 	 .on("mousemove", showTooltip)
 	 .on("mouseout", hideTooltip)
   }
+  
+  
   
 }
 
