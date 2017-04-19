@@ -1,7 +1,7 @@
 path {
-  stroke: #f46b6b;
-  stroke-width: 0.25px;
-  fill: #c2b280;
+  stroke: #c2b280;
+  /*stroke-width: 0.25px;
+  fill: #ffffff;*/
   opacity: 0.9;
 }
 div.tooltip {
@@ -19,4 +19,8 @@ div.tooltip {
 
 circle {
   fill: #f46b6b;
+}
+
+.active {
+  fill: orange;
 }
