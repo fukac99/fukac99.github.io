@@ -6,11 +6,13 @@
 <script src="https://unpkg.com/topojson-client@3"></script>
 <script src="https://d3js.org/d3-polygon.v1.min.js"></script>
 <script src="trip_data.js"></script>
+<script src="functions.js"></script>
 <link rel="stylesheet" type="text/css" href="map_style.css" />
 <script>
 var width = window.innerWidth,
     height = window.innerHeight,
-    centered;
+    centered,
+    clicked_point;
 
 var projection = d3.geoMercator()
     .translate([width / 2.2, height / 1.7]);
@@ -29,10 +31,11 @@ var tooltip = d3.select("body")
   .append("div")
   .attr("class", "tooltip hidden");
   
-var visited_countries = ["752", "578", "703", "642", "100",
-						 "008", "807", "070", "040", "604",
-						 "068", "840", "276", "826", "-99", 
-						 "499"]
+var tooltip_point = d3.select("body")
+  	.append("div")
+  	.attr("class", "tooltip_point hidden");
+  	
+
 
 // load and display the World
 d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function(error, topology) {
@@ -44,22 +47,15 @@ d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function(error, topol
       .attr("d", path)
       /*.attr("fill", colorCountry)*/
       .on("click", clicked)
-      .on("mousemove", showTooltip)
- 	  .on("mouseout", hideTooltip);
+      //.on("mousemove", showTooltipCountry)
+ 	  //.on("mouseout", hideTooltip)
+ 	  ;
       
       
     g.selectAll('path')
 	 .attr('fill', colorCountry);
  
  });
- 
-function colorCountry(country) {
-    if (visited_countries.includes(country.id)) {
-        return '#c8b98d';
-    } else {
-        return '#e7d8ad';
-    }
-};
 
 /*var zoom = d3.zoom()
     .on("zoom",function() {
@@ -72,88 +68,95 @@ function colorCountry(country) {
          .attr("r", width / 300 / z.k);
 });*/
 
-function hideTooltip(d) {
-  // Show the tooltip (unhide it) and set the name of the data entry.
-  tooltip
-  .classed('hidden', true);
+function clickedPoint(p){
+	if (p && clicked_point !==p){
+		hideTooltipPoint(clicked_point); // hide old tooltip
+		showTooltipPoint(p);
+		clicked_point = p;
+	} else {
+		hideTooltipPoint(p);
+		clicked_point = null;
+	}
 }
 
-function showTooltip(d){
-  var mouse = d3.mouse(svg.node()).map(function(d) {
-                        return parseInt(d);
-                    });
-  tooltip
-  .classed('hidden', false)
-  .html(d.id)
-  .attr('style', 
-        'left:' + (mouse[0] + 15) + 'px; top:' + (mouse[1] - 35) + 'px')
-};
-
 function clicked(d) {
-  var x, y, k;
+  if (tooltip_point.classed("hidden")){
+	  var x, y, k;
+	  var geobounds = d3.geoBounds(d) // geo bounding box
+	
+	  if (d && centered !== d) {
+		var centroid = path.centroid(d);
+		var bounds = path.bounds(d);
+		var dx = bounds[1][0] - bounds[0][0],
+			dy = bounds[1][1] - bounds[0][1];
+		x = (bounds[0][0] + bounds[1][0]) / 2;
+		y = (bounds[0][1] + bounds[1][1]) / 2;
+		k = Math.min(width / dx, height / dy);
+		centered = d;
+	  } else {
+		x = width / 2;
+		y = height / 2;
+		k = 1;
+		centered = null;
+	  }
   
-  // TODO add manually fucked up countries (Canada, Norway, USA, Russia etc.)
-  
-  if (d && centered !== d) {
-    var centroid = path.centroid(d);
-    var bounds = path.bounds(d),
-        dx = bounds[1][0] - bounds[0][0],
-        dy = bounds[1][1] - bounds[0][1];
-    x = (bounds[0][0] + bounds[1][0]) / 2;
-    y = (bounds[0][1] + bounds[1][1]) / 2;
-    k = Math.min(width / dx, height / dy);
-    console.log(k);
-    centered = d;
-  } else {
-    x = width / 2;
-    y = height / 2;
-    k = 1;
-    centered = null;
-  }
-  
-  g.selectAll("path")
-   .classed("active", centered && function(d) { return d === centered; })
+	  g.selectAll("path")
+	   .classed("active", centered && function(d) { return d === centered; })
    
-  if (centered !== null){
-  	g.selectAll("path")
-  	 .style("stroke-width", (0.75 / k) + "px");
-  }
-
-  g.transition()
-    //.style("stroke-width", (0.75 / k) + "px")
-    .duration(750)
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .each('end', function() {
-        if (centered === null){
-		  g.selectAll("path")
-		   .style("stroke-width", (0.75 / k) + "px");
-  }
-    });
-      
-  var contained_points = trip_data.filter(function(point) { 
-  	if(d.geometry !== null) { 
-  		return d3.polygonContains(d.geometry.coordinates[0], [point.lon, point.lat]);
-  	}
-  });
-    
-  g.selectAll("circle").remove()
+   
+	  // make contours thinner before zoom 
+	  if (centered !== null){
+		g.selectAll("path")
+		 .style("stroke-width", (0.75 / k) + "px");
+	  }
   
-  if (centered !== null){
-  	g.selectAll("circle")
-	 .data(contained_points)
-	 .enter()
-	 .append("circle")
-	 .attr("cx", function(d) {
-			return projection([d.lon, d.lat])[0];
-	  })
-	 .attr("cy", function(d) {
-			return projection([d.lon, d.lat])[1];
-	  })
-	 .attr("r", 5 / k + "px")
-	 .on("mousemove", showTooltip)
-	 .on("mouseout", hideTooltip)
-  }
+	  // map transition
+	  g.transition()
+		//.style("stroke-width", (0.75 / k) + "px")
+		.duration(750)
+		.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+		.on('end', function() {
+			if (centered === null){
+			  g.selectAll("path")
+			   .style("stroke-width", (0.75 / k) + "px");
+	  }
+		});
   
+	  // filter only points in bounding box    
+	  var contained_points = trip_data.filter(function(point) { 
+		if((point.lon >= geobounds[0][0]) 
+		& (point.lon <= geobounds[1][0]) 
+		& (point.lat >= geobounds[0][1]) 
+		& (point.lat <= geobounds[1][1])) { 
+			return true;
+		} else {
+			return false;
+		}
+	  });
+ 
+	  // remove all old points
+	  g.selectAll("circle").remove()
+  
+	  // if zooming in -> draw points 
+	  if (centered !== null){
+		g.selectAll("circle")
+		 .data(contained_points)
+		 .enter()
+		 .append("circle")
+		 .attr("cx", function(d) {
+				return projection([d.lon, d.lat])[0];
+		  })
+		 .attr("cy", function(d) {
+				return projection([d.lon, d.lat])[1];
+		  })
+		 .attr("r", 5 / k + "px")
+		 .on("mousemove", showTooltip)
+		 .on("mouseout", hideTooltip)
+		 .on("click", showTooltipPoint)
+	  }
+  } else {
+		hideTooltipPoint(d);  
+  }
   
   
 }
