@@ -17,6 +17,41 @@ div.tooltip {
         font-family: "Lato", sans-serif;
     }
     
+div.legendContainer {
+        color: #000000;
+        background-color: #fff;
+        border-width: 0.1px;
+        border-style: solid;
+        border-color: #000000;
+        padding: .5em;
+        border-radius: 5px;
+        opacity: 0.9;
+        position: absolute;
+        font-family: "Lato", sans-serif;
+        display: table;
+        margin:auto;
+ 		position:absolute;
+ 		top:0;
+ 		bottom:0;
+        
+    }
+    
+ul.legend {
+	list-style-type: none;
+	list-style: none;
+	padding: 3px;
+	vertical-align: middle;
+	display: block;
+    line-height: 50px;
+    font-family: "Lato", sans-serif;
+    cursor:pointer;
+}
+
+ul.legend img {
+	vertical-align: middle;
+	
+}
+    
 div.tooltip_point {
         color: #000000;
         background-color: #fff;
@@ -31,7 +66,7 @@ div.tooltip_point {
     }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 circle {

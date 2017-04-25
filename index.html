@@ -15,7 +15,7 @@ var width = window.innerWidth,
     clicked_point;
 
 var projection = d3.geoMercator()
-    .translate([width / 2.2, height / 1.7]);
+    .translate([width / 2.2, height / 1.5]);
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
@@ -31,6 +31,22 @@ var tooltip = d3.select("body")
   .append("div")
   .attr("class", "tooltip hidden");
   
+var legend_cont = d3.select("body")
+  					.append("div")
+  					.attr("class", "legendContainer");
+  					
+var legend  = d3.select(".legendContainer")
+  				.append("ul")
+  				.attr("class", "legend");
+
+var legend_items = legend.selectAll("li")
+					 .data(post_cats)
+					 .enter()
+					 .append("li")
+					 .on("click", colorCountriesCategory)
+					 .html(function(d, i){return getLegend(d);});
+
+ 
 var tooltip_point = d3.select("body")
   	.append("div")
   	.attr("class", "tooltip_point hidden");
@@ -47,8 +63,8 @@ d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function(error, topol
       .attr("d", path)
       /*.attr("fill", colorCountry)*/
       .on("click", clicked)
-      //.on("mousemove", showTooltipCountry)
- 	  //.on("mouseout", hideTooltip)
+      .on("mousemove", showTooltipCountry)
+ 	  .on("mouseout", hideTooltip)
  	  ;
       
       
@@ -85,10 +101,15 @@ function clicked(d) {
 	  var geobounds = d3.geoBounds(d) // geo bounding box
 	
 	  if (d && centered !== d) {
+	  	g.selectAll('path')
+	 	.attr('fill', colorCountry);
+	 	
 		var centroid = path.centroid(d);
 		var bounds = path.bounds(d);
 		var dx = bounds[1][0] - bounds[0][0],
 			dy = bounds[1][1] - bounds[0][1];
+		
+		legend_cont.classed("hidden", true);
 		x = (bounds[0][0] + bounds[1][0]) / 2;
 		y = (bounds[0][1] + bounds[1][1]) / 2;
 		k = Math.min(width / dx, height / dy);
@@ -98,6 +119,7 @@ function clicked(d) {
 		y = height / 2;
 		k = 1;
 		centered = null;
+		legend_cont.classed("hidden", false);
 	  }
   
 	  g.selectAll("path")
