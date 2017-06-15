@@ -393,7 +393,7 @@ var post_cats = [{"name" : "General",
 				 {"name" : "Gallery" , 
 				  "url" : "img/Gallery.jpg"}];
 				  
-var icon_links = {"General" : "img/Guide.jpg",
+var icon_links = {"General" : "img/General.jpg",
 				  "Guide" : "img/Guide.jpg",
 				  "Running" : "img/Running.jpg",
 				  "Food" : "img/Food.jpg",

@@ -60,8 +60,13 @@ function showTooltipPoint(d){
 
 // color country
 function colorCountry(country) {
-    if (visited_countries.includes(country.id)) {
-        return '#c8b98d';
+	if (visited_countries.includes(country.id)) {
+		// hack to discolor ehtiopia
+    	if (country.id == '-99' & country.geometry.coordinates[0][0][0] != 20.590405904059054){
+    		return '#e7d8ad'   	
+    	} else {
+    		return '#c8b98d';
+    	};
     } else {
         return '#e7d8ad';
     }

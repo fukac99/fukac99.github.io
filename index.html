@@ -73,7 +73,7 @@ d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function(error, topol
  
  });
 
-/*var zoom = d3.zoom()
+var zoom = d3.zoom()
     .on("zoom",function() {
         var z = d3.event.transform;
         g.attr("transform", z);
@@ -82,7 +82,7 @@ d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function(error, topol
         
         g.selectAll("circle")
          .attr("r", width / 300 / z.k);
-});*/
+});
 
 function clickedPoint(p){
 	if (p && clicked_point !==p){
@@ -184,7 +184,7 @@ function clicked(d) {
 }
 
 
-// svg.call(zoom);
+//svg.call(zoom);
 </script>
 </body>
 </html>

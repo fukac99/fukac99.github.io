@@ -48,17 +48,6 @@ g.selectAll("circle")
  
  });
 
-var zoom = d3.zoom()
-    .on("zoom",function() {
-        var z = d3.event.transform;
-        g.attr("transform", z);
-        g.selectAll("path")  
-            .attr("d", path.projection(projection)); 
-        
-        g.selectAll("circle")
-         .attr("r", width / 300 / z.k);
-});
-
 function hideTooltip(d) {
   // Show the tooltip (unhide it) and set the name of the data entry.
   tooltip
