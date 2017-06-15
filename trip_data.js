@@ -3,12 +3,16 @@ var trip_data = [
  "lon" : 16.354645, 
  "name" : "Vienna, Austria",
  "country" : "040",
- "posts" : {}},
+ "posts" : {
+ 	"NoStory" : ""
+ }},
 {"lat" : 59.334823, 
  "lon" : 18.051397, 
  "country" : "752",
  "name" : "Stockholm, Sweden",
- "posts" : {}},
+ "posts" : {
+ 	"NoStory" : ""
+ }},
 {"lat" : 68.349822, 
  "lon" : 18.829744,
  "name" : "Abisko, Sweden",
@@ -263,12 +267,16 @@ var trip_data = [
  "lon" : 9.314098, 
  "name" : "Esslingen, Germany",
  "country" : "276",
- "posts" : {}},
+ "posts" : {
+ 	"NoStory" : ""
+ }},
 {"lat" : 47.070191, 
  "lon" : 14.300150, 
  "name" : "Sankt Lambrecht, Austria",
  "country" : "040",
- "posts" : {}},
+ "posts" : {
+ 	"NoStory" : ""
+ }},
 {"lat" : 28.458773, 
 "lon" : -81.390048, 
 "name" : "Orlando, FL", 
@@ -331,7 +339,9 @@ var trip_data = [
  "lon" : -70.021054, 
  "name" : "Puno, Peru",
  "country" : "604",
- "posts" : {}},
+ "posts" : {
+ 	"NoStory" : ""
+ }},
  {"lat" : -13.514655, 
  "lon" : -71.980451, 
  "name" : "Cusco, Peru",
@@ -359,7 +369,9 @@ var trip_data = [
  "lon" : -71.232811, 
  "name" : "Ausangate massif, Peru",
  "country" : "604",
- "posts" : {}},
+ "posts" : {
+ 	"NoStory" : ""
+ }},
  {"lat" : -13.106740, 
  "lon" : -72.045081, 
  "name" : "Lares, Peru",
@@ -369,7 +381,9 @@ var trip_data = [
  "lon" : -72.028161, 
  "name" : "Huaran, Peru",
  "country" : "604",
- "posts" : {}},
+ "posts" : {
+ 	"NoStory" : ""
+ }},
 ];
 
 
@@ -379,7 +393,7 @@ var visited_countries = ["752", "578", "703", "642", "100",
 						 "499", "191"];
 						 
 var post_cats = [{"name" : "General", 
-				  "url" : "img/Guide.jpg"},
+				  "url" : "img/General.jpg"},
 				 {"name" : "Guide" , 
 				  "url" : "img/Guide.jpg"},
 				 {"name" : "Running" , 
@@ -391,7 +405,9 @@ var post_cats = [{"name" : "General",
 				 {"name" : "Nature" , 
 				  "url" : "img/Nature.jpg"},
 				 {"name" : "Gallery" , 
-				  "url" : "img/Gallery.jpg"}];
+				  "url" : "img/Gallery.jpg"},
+				  {"name" : "City" , 
+				  "url" : "img/City.jpg"}];
 				  
 var icon_links = {"General" : "img/General.jpg",
 				  "Guide" : "img/Guide.jpg",
@@ -399,7 +415,9 @@ var icon_links = {"General" : "img/General.jpg",
 				  "Food" : "img/Food.jpg",
 				  "Climbing" : "img/Climbing.jpg",
 				  "Nature" : "img/Nature.jpg",
-				  "Gallery" : "img/Gallery.jpg"};
+				  "Gallery" : "img/Gallery.jpg",
+				  "City" : "img/City.jpg",
+				  "NoStory" : ""};
 				 
 				 
 				 

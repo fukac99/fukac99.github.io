@@ -63,7 +63,13 @@ div.tooltip_point {
         opacity: 0.9;
         position: absolute;
         font-family: "Lato", sans-serif;
+        
     }
+
+.inner_tooltip {
+	display: inline-block;
+	margin-right: 10px;
+}
 
 .hidden {
   display: none !important;

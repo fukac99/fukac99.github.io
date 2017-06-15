@@ -35,7 +35,13 @@ function showTooltip(d){
   if (tooltip_point.classed("hidden")){
   		tooltip
 	   .classed('hidden', false)
-	   .html(d.name)
+	   .html("<span id='close' onclick='hideTooltipPoint()'>x</span>" + 
+	   "<div class='inner_tooltip'>" + 
+	   			"<p>" + d.name + "</p>" +	 
+        	 "</div><div>" + 
+        		getIconsAndLinks(d) + 
+    			// 
+        	"</div>")
 	   .attr('style', 
 			 'left:' + (mouse[0] + 15) + 'px; top:' + (mouse[1] - 35) + 'px')
   };
@@ -49,10 +55,12 @@ function showTooltipPoint(d){
                     });
   tooltip_point
   .classed('hidden', false)
-  .html("<div> \
-        		<span id='close' onclick='hideTooltipPoint()'>x</span>" +
+  .html("<span id='close' onclick='hideTooltipPoint()'>x</span>" + 
+	   "<div class='inner_tooltip'>" + 
+	   			"<p>" + d.name + "</p>" +	 
+        	 "</div><div>" + 
         		getIconsAndLinks(d) + 
-    			// "<h3>" + d.name + "</h3>" +
+    			// 
         	"</div>")
   .attr('style', 
         'left:' + (mouse[0] + 15) + 'px; top:' + (mouse[1] - 35) + 'px')
@@ -80,13 +88,20 @@ function getIconsAndLinks(posts){
 	
 	
 	keys.forEach(function(key, index){
-	    var this_img = "<a href='POST_LINK' target='_blank'><img class = 'icon' \
+		//if not story
+		if (key == "NoStory"){
+			var this_img = "<p>Story coming soon...</p>" ;
+			st = this_img
+		} else {
+			var this_img = "<a href='POST_LINK' target='_blank'><img class = 'icon' \
 					   title='ICON_KIND' src='ICON_LINK' \
 					   alt='' width='50' height='50' /></a>" ;
-		this_img = this_img.replace("POST_LINK", posts["posts"][key]);
-		this_img = this_img.replace("ICON_KIND", key);
-		this_img = this_img.replace("ICON_LINK", icon_links[key]);
-		st += this_img
+			this_img = this_img.replace("POST_LINK", posts["posts"][key]);
+			this_img = this_img.replace("ICON_KIND", key);
+			this_img = this_img.replace("ICON_LINK", icon_links[key]);
+			st += this_img
+		}
+	    
 	});
 	
 	return st
