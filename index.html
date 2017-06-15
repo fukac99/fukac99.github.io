@@ -4,7 +4,7 @@
 <body>
 <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://unpkg.com/topojson-client@3"></script>
-<script src="https://d3js.org/d3-polygon.v1.min.js"></script>
+<!-- <script src="https://d3js.org/d3-polygon.v1.min.js"></script> -->
 <script src="trip_data.js"></script>
 <script src="functions.js"></script>
 <link rel="stylesheet" type="text/css" href="map_style.css" />
@@ -21,6 +21,12 @@ var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height)
     .attr("class", "map");
+    
+svg.append("rect")
+    .attr("class", "background")
+    .attr("width", width)
+    .attr("height", height)
+    .on("click", clickedOcean);
 
 var path = d3.geoPath()
     .projection(projection);
@@ -95,16 +101,38 @@ function clickedPoint(p){
 	}
 }
 
+function clickedOcean(){
+	var x, y, k;
+	x = width / 2;
+	y = height / 2;
+	k = 1;
+	centered = null;
+	legend_cont.classed("hidden", false);
+	
+	// map transition
+	g.transition()
+		//.style("stroke-width", (0.75 / k) + "px")
+		.duration(750)
+		.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+		.on('end', function() {
+			if (centered === null){
+			  g.selectAll("path")
+			   .style("stroke-width", (0.75 / k) + "px");
+	  }
+		});
+		
+	// remove all old points
+	g.selectAll("image").remove()
+	
+
+}
+
 function clicked(d) {
+  // console.log(d);
   if (tooltip_point.classed("hidden")){
 	  var x, y, k;
-	  var geobounds = d3.geoBounds(d) // geo bounding box
 	
-	  // if havent been -> don't do anything
-	  if (!visited_countries.includes(d.id)){
-	  	return 1
-	  };
-	  if (d && centered !== d) {
+	  if ((d && centered !== d) & (visited_countries.includes(d.id))) {
 	  	g.selectAll('path')
 	 	.attr('fill', colorCountry);
 	 	
@@ -148,20 +176,17 @@ function clicked(d) {
 	  }
 		});
   
-	  // filter only points in bounding box    
+	  // filter only points in the country
 	  var contained_points = trip_data.filter(function(point) { 
-		if((point.lon >= geobounds[0][0]) 
-		& (point.lon <= geobounds[1][0]) 
-		& (point.lat >= geobounds[0][1]) 
-		& (point.lat <= geobounds[1][1])) { 
-			return true;
-		} else {
-			return false;
-		}
+	  	if (point.country == d.id){
+	  		return true;
+	  	} else {
+	  		return false;
+	  	}
 	  });
  
 	  // remove all old points
-	  g.selectAll("circle").remove()
+	  g.selectAll("image").remove()
   
 	  // if zooming in -> draw points 
 	  if (centered !== null){
@@ -169,15 +194,15 @@ function clicked(d) {
 		 .data(contained_points)
 		 .enter()
 		 .append("svg:image")
-		 .attr("xlink:href", "img/location.png")
+		 .attr("xlink:href", "img/location1.png")
 		 .attr("x", function(d) {
 				return projection([d.lon, d.lat])[0];
 		  })
 		 .attr("y", function(d) {
 				return projection([d.lon, d.lat])[1];
 		  })
-		 .attr("width", 22 / k + "px")
-         .attr("height", 22 / k + "px")
+		 .attr("width", 30 / k + "px")
+         .attr("height", 30 / k + "px")
 		 .on("mousemove", showTooltip)
 		 .on("mouseout", hideTooltip)
 		 .on("click", showTooltipPoint)

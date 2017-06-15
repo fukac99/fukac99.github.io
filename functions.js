@@ -129,7 +129,7 @@ function colorCountriesCategory(d){
 	var active_countries =  these_countries.map(function(a) {return a.country;});
 	var unique = active_countries.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
 	
-	console.log(unique);
+	// console.log(unique);
 	
 	g.selectAll('path')
 	 .attr('fill', function(t){

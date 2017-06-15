@@ -92,6 +92,11 @@ circle {
     color: #f46b6b;
 }
 
+.background {
+	background: white;
+	fill: white;
+}
+
 #close:hover {
     float:right;
     display:inline-block;

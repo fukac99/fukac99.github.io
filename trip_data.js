@@ -1,4 +1,25 @@
 var trip_data = [
+{"lat" : 55.859234, 
+ "lon" : -4.244489, 
+ "name" : "Glasgow, Scotland",
+ "country" : "826",
+ "posts" : {
+ 	"NoStory" : ""
+ }},
+ {"lat" : 55.950448, 
+ "lon" : -3.180290, 
+ "name" : "Edinburgh, Scotland",
+ "country" : "826",
+ "posts" : {
+ 	"NoStory" : ""
+ }},
+ {"lat" : 56.241301, 
+ "lon" : -4.700753, 
+ "name" : "Loch Lomond, Scotland",
+ "country" : "826",
+ "posts" : {
+ 	"NoStory" : ""
+ }},
 {"lat" : 48.215567, 
  "lon" : 16.354645, 
  "name" : "Vienna, Austria",
