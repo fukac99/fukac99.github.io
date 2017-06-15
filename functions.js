@@ -68,8 +68,9 @@ function colorCountry(country) {
 };
 
 // get icons and links
-function getIcons(posts){
-	keys = Object.keys(posts)
+function getIconsAndLinks(posts){
+	//console.log(posts["posts"])
+	keys = Object.keys(posts["posts"])
 	var st = "";
 	
 	
@@ -77,9 +78,9 @@ function getIcons(posts){
 	    var this_img = "<a href='POST_LINK' target='_blank'><img class = 'icon' \
 					   title='ICON_KIND' src='ICON_LINK' \
 					   alt='' width='50' height='50' /></a>" ;
-		this_img = this_img.replace("POST_LINK", posts[key]);
+		this_img = this_img.replace("POST_LINK", posts["posts"][key]);
 		this_img = this_img.replace("ICON_KIND", key);
-		this_img = this_img.replace("ICON_LINK", post_cats[key]);
+		this_img = this_img.replace("ICON_LINK", icon_links[key]);
 		st += this_img
 	});
 	
