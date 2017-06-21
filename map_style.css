@@ -51,7 +51,17 @@ ul.legend img {
 	vertical-align: middle;
 	
 }
-    
+
+.arc {
+	fill: none;
+	stroke: #f46b6b;
+    stroke-width: 2px;
+}
+
+.plane {
+	fill: #f46b6b;
+}
+  
 div.tooltip_point {
         color: #000000;
         background-color: #fff;

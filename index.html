@@ -6,7 +6,9 @@
 <script src="https://unpkg.com/topojson-client@3"></script>
 <!-- <script src="https://d3js.org/d3-polygon.v1.min.js"></script> -->
 <script src="trip_data.js"></script>
+<!-- <script src="flight_data.js"></script> -->
 <script src="functions.js"></script>
+<!-- <script src="flight_routes.js"></script>-->
 <link rel="stylesheet" type="text/css" href="map_style.css" />
 <script>
 var width = window.innerWidth,
@@ -16,6 +18,9 @@ var width = window.innerWidth,
 
 var projection = d3.geoMercator()
     .translate([width / 2.2, height / 1.5]);
+    
+var plane_path = d3.geoPath()
+    	.projection(projection);
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
@@ -31,7 +36,9 @@ svg.append("rect")
 var path = d3.geoPath()
     .projection(projection);
 
+
 var g = svg.append("g");
+var arcGroup = g.append('g');
 
 var tooltip = d3.select("body")
   .append("div")
@@ -58,7 +65,6 @@ var tooltip_point = d3.select("body")
   	.attr("class", "tooltip_point hidden");
   	
 
-
 // load and display the World
 d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function(error, topology) {
     g.selectAll("path")
@@ -76,9 +82,14 @@ d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function(error, topol
       
     g.selectAll('path')
 	 .attr('fill', colorCountry);
+	 
+	//draw visited locations
+	draw_visited_locations()
  
  });
 
+
+	
 /*var zoom = d3.zoom()
     .on("zoom",function() {
         var z = d3.event.transform;
@@ -213,8 +224,7 @@ function clicked(d) {
   
   
 }
-
-
+  	
 //svg.call(zoom);
 </script>
 </body>

@@ -27,8 +27,8 @@ var trip_data = [
  "posts" : {
  	"NoStory" : ""
  }},
-{"lat" : 59.334823, 
- "lon" : 18.051397, 
+{"lat" : 59.335523, 
+ "lon" : 14.076803, 
  "country" : "752",
  "name" : "Stockholm, Sweden",
  "posts" : {
@@ -40,9 +40,9 @@ var trip_data = [
  "country" : "752",
  "posts" : {
  "Nature" : "https://twosundowners.com/fjallraven_classic/",
- "Gallery" : "https://twosundowners.com/photo-Gallery/Gallery/fjallraven-classic-sweden#album"}},
-{"lat" : 68.401975,
- "lon" : 15.028818,
+ "Gallery" : "https://twosundowners.com/photo-gallery/gallery/fjallraven-classic-sweden/#album"}},
+{"lat" : 68.229271, 
+ "lon" : 12.223273,
  "name" : "Lofoten, Norway",
  "country" : "578",
  "posts" : {
@@ -363,7 +363,7 @@ var trip_data = [
  "posts" : {
  	"NoStory" : ""
  }},
- {"lat" : -13.514655, 
+ {"lat" : -14.514655, 
  "lon" : -71.980451, 
  "name" : "Cusco, Peru",
  "country" : "604",
@@ -371,7 +371,7 @@ var trip_data = [
  	"General" : "https://twosundowners.com/digital-nomad-cusco/"
  	}},
  {"lat" : -13.156058, 
- "lon" : -72.526524, 
+ "lon" : -73.926524, 
  "name" : "Salkantay & Machu Picchu, Peru",
  "country" : "604",
  "posts" : {
@@ -379,7 +379,7 @@ var trip_data = [
  	"Gallery" : "https://twosundowners.com/photo-gallery/gallery/salkantay-machu-picchu/#album"
  }},
  {"lat" : -13.259986, 
- "lon" : -72.267283, 
+ "lon" : -73.267283, 
  "name" : "Ollantaytambo, Peru",
  "country" : "604",
  "posts" : {
@@ -393,7 +393,7 @@ var trip_data = [
  "posts" : {
  	"NoStory" : ""
  }},
- {"lat" : -13.106740, 
+ {"lat" : -12.106740, 
  "lon" : -72.045081, 
  "name" : "Lares, Peru",
  "country" : "604",
@@ -439,7 +439,5 @@ var icon_links = {"General" : "img/General.jpg",
 				  "Gallery" : "img/Gallery.jpg",
 				  "City" : "img/City.jpg",
 				  "NoStory" : ""};
-				 
-				 
 				 
 				 
