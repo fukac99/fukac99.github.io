@@ -368,7 +368,9 @@ var trip_data = [
  "name" : "Cusco, Peru",
  "country" : "604",
  "posts" : {
- 	"General" : "https://twosundowners.com/digital-nomad-cusco/"
+ 	"General" : "https://twosundowners.com/digital-nomad-cusco/",
+ 	"Food" : "https://twosundowners.com/vegetarian-food-cusco/",
+ 	"Running" : "https://twosundowners.com/running-in-cusco/"
  	}},
  {"lat" : -13.156058, 
  "lon" : -73.926524, 
@@ -385,13 +387,15 @@ var trip_data = [
  "posts" : {
  	"Guide" : "https://twosundowners.com/ollantaytambo/",
  	"Gallery" : "https://twosundowners.com/photo-gallery/gallery/1769/#album"
+ 	"Running" : "https://twosundowners.com/running-in-cusco/"
  	}},
  {"lat" : -13.790552, 
  "lon" : -71.232811, 
  "name" : "Ausangate massif, Peru",
  "country" : "604",
  "posts" : {
- 	"NoStory" : ""
+ 	"General" : "https://twosundowners.com/ausangate-trek/",
+ 	"Gallery" : "https://twosundowners.com/photo-gallery/gallery/ausangate-trek/#album"
  }},
  {"lat" : -12.106740, 
  "lon" : -72.045081, 
@@ -403,7 +407,15 @@ var trip_data = [
  "name" : "Huaran, Peru",
  "country" : "604",
  "posts" : {
- 	"NoStory" : ""
+ 	"Guide" : "https://twosundowners.com/sacred-valley/",
+ 	"Running" : "https://twosundowners.com/running-in-cusco/"
+ }},
+ {"lat" : -9.520975, 
+ "lon" : -77.530068, 
+ "name" : "Huaraz, Peru",
+ "country" : "604",
+ "posts" : {
+ 	"General" : "https://twosundowners.com/huaraz/",
  }},
 ];
 
