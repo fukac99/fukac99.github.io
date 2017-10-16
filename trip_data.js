@@ -368,34 +368,34 @@ var trip_data = [
  "name" : "Cusco, Peru",
  "country" : "604",
  "posts" : {
- 	"General" : "https://twosundowners.com/digital-nomad-cusco/",
- 	"Food" : "https://twosundowners.com/vegetarian-food-cusco/",
- 	"Running" : "https://twosundowners.com/running-in-cusco/"
- 	}},
+    "General" : "https://twosundowners.com/digital-nomad-cusco/",
+    "Food" : "https://twosundowners.com/vegetarian-food-cusco/",
+    "Running" : "https://twosundowners.com/running-in-cusco/"
+    }},
  {"lat" : -13.156058, 
  "lon" : -73.926524, 
  "name" : "Salkantay & Machu Picchu, Peru",
  "country" : "604",
  "posts" : {
- 	"General" : "https://twosundowners.com/salkantay-trek/",
- 	"Gallery" : "https://twosundowners.com/photo-gallery/gallery/salkantay-machu-picchu/#album"
+    "General" : "https://twosundowners.com/salkantay-trek/",
+    "Gallery" : "https://twosundowners.com/photo-gallery/gallery/salkantay-machu-picchu/#album"
  }},
  {"lat" : -13.259986, 
  "lon" : -73.267283, 
  "name" : "Ollantaytambo, Peru",
  "country" : "604",
  "posts" : {
- 	"Guide" : "https://twosundowners.com/ollantaytambo/",
- 	"Gallery" : "https://twosundowners.com/photo-gallery/gallery/1769/#album"
- 	"Running" : "https://twosundowners.com/running-in-cusco/"
- 	}},
+    "Guide" : "https://twosundowners.com/ollantaytambo/",
+    "Gallery" : "https://twosundowners.com/photo-gallery/gallery/1769/#album",
+    "Running" : "https://twosundowners.com/running-in-cusco/"
+ }},
  {"lat" : -13.790552, 
  "lon" : -71.232811, 
  "name" : "Ausangate massif, Peru",
  "country" : "604",
  "posts" : {
- 	"General" : "https://twosundowners.com/ausangate-trek/",
- 	"Gallery" : "https://twosundowners.com/photo-gallery/gallery/ausangate-trek/#album"
+    "General" : "https://twosundowners.com/ausangate-trek/",
+    "Gallery" : "https://twosundowners.com/photo-gallery/gallery/ausangate-trek/#album"
  }},
  {"lat" : -12.106740, 
  "lon" : -72.045081, 
@@ -407,23 +407,135 @@ var trip_data = [
  "name" : "Huaran, Peru",
  "country" : "604",
  "posts" : {
- 	"Guide" : "https://twosundowners.com/sacred-valley/",
- 	"Running" : "https://twosundowners.com/running-in-cusco/"
+    "Guide" : "https://twosundowners.com/sacred-valley/",
+    "Running" : "https://twosundowners.com/running-in-cusco/"
  }},
  {"lat" : -9.520975, 
  "lon" : -77.530068, 
  "name" : "Huaraz, Peru",
  "country" : "604",
  "posts" : {
- 	"General" : "https://twosundowners.com/huaraz/",
+    "General" : "https://twosundowners.com/huaraz/",
  }},
+ {"lat" : -9.010320, 
+ "lon" : -77.611996,
+ "name" : "Laguna 69, Peru",
+ "country" : "604",
+ "posts" : {
+    "General" : "https://twosundowners.com/laguna-69/",
+    "Gallery" : "https://twosundowners.com/photo-gallery/gallery/peru-laguna-69/#album"
+ }},
+ {"lat" : 6.241829, 
+ "lon" : -75.571250, 
+ "name" : "Medellin, Colombia",
+ "country" : "170",
+ "posts" : {
+    "Guide" : "https://twosundowners.com/10-things-medellin/",
+    "General": "https://twosundowners.com/medellin/" 
+ }},
+ {"lat" : 6.231396, 
+ "lon" : -75.158678, 
+ "name" : "Guatape, Colombia",
+ "country" : "170",
+ "posts" : {
+    "General" : "https://twosundowners.com/guatape/",
+ }},
+ {"lat" : 10.748722, 
+ "lon" : -75.213978, 
+ "name" : "Santa Marta, Colombia",
+ "country" : "170",
+ "posts" : {
+    "General" : "https://twosundowners.com/santa-marta/",
+ }},
+ {"lat" : 10.412690, 
+ "lon" : -75.537000, 
+ "name" : "Cartagena, Colombia",
+ "country" : "170",
+ "posts" : {
+    "General" : "https://twosundowners.com/cartagena/",
+ }},
+ {"lat" : 9.793243, 
+ "lon" : -75.858449, 
+ "name" : "Islas de San Bernardo, Colombia",
+ "country" : "170",
+ "posts" : {
+    "General" : "https://twosundowners.com/casa-en-el-agua/",
+ }},
+ {"lat" : 4.618133, 
+ "lon" : -74.070657 , 
+ "name" : "Bogota, Colombia",
+ "country" : "170",
+ "posts" : {
+    "General" : "https://twosundowners.com/bogota/",
+ }},
+ {"lat" : 11.288231, 
+ "lon" : -74.151929, 
+ "name" : "Tayrona National Park, Colombia",
+ "country" : "170",
+ "posts" : {
+    "General" : "https://twosundowners.com/tayrona/",
+ }},
+ {"lat" : -33.438100, 
+ "lon" : -71.658713, 
+ "name" : "Santiago de Chile, Chile",
+ "country" : "152",
+ "posts" : {
+    "General" : "https://twosundowners.com/santiago-de-chile/",
+ }},
+ {"lat" : -34.701668,
+ "lon" :  -71.334896, 
+ "name" : "Cajon de Maipo, Chile",
+ "country" : "152",
+ "posts" : {}},
+ {"lat" : -33.043221,
+ "lon" : -73.608303,
+ "name" : "Valparaiso, Chile",
+ "country" : "152",
+ "posts" : {
+    "General" : "https://twosundowners.com/valparaiso/",
+ }},
+ {"lat" : -33.853629, 
+ "lon" : 149.239549, 
+ "name" : "Sydney, Australia",
+ "country" : "036",
+ "posts" : {}},
+ {"lat" : -27.498027,
+ "lon" : 150.998502, 
+ "name" : "Brisbane, Australia",
+ "country" : "036",
+ "posts" : {}},
+ {"lat" : -16.923840, 
+ "lon" : 144.762937, 
+ "name" : "Cairns, Australia",
+ "country" : "036",
+ "posts" : {}},
+ {"lat" : -15.485735,
+ "lon" : 144.464824, 
+ "name" : "Port Douglas, Australia",
+ "country" : "036",
+ "posts" : {}},
+ {"lat" : -14.170165, 
+ "lon" : 144.418354, 
+ "name" : "Daintree, Australia",
+ "country" : "036",
+ "posts" : {}},
+ {"lat" : -28.594068, 
+ "lon" : 151.224257, 
+ "name" : "Nimbin, Australia",
+ "country" : "036",
+ "posts" : {}},
+ {"lat" : -28.638879, 
+ "lon" : 152.130533, 
+ "name" : "Byron Bay, Australia",
+ "country" : "036",
+ "posts" : {}},
 ];
 
 
 var visited_countries = ["752", "578", "703", "642", "100",
 						 "008", "807", "070", "040", "604",
 						 "068", "840", "276", "826", "-99", 
-						 "499", "191"];
+						 "499", "191", "170", "152", "036"];
 						 
 var post_cats = [{"name" : "General", 
 				  "url" : "img/General.jpg"},
